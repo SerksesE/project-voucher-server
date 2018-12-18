@@ -1,4 +1,3 @@
-import { baseUrl } from '../config'
 
 export function renderTemplate(data: { uuid: string }) {
   return `
@@ -73,7 +72,7 @@ export function renderTemplate(data: { uuid: string }) {
                   Thank you for taking the time to answer our survey. With your valuable input, we hope to imporve the quality of the food serverd at your university
                     </td>
                   </tr><tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;"><td class="content-block" itemprop="handler" itemscope itemtype="http://schema.org/HttpActionHandler" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
-                      <a href="${baseUrl}/${data.uuid}" class="btn-primary" itemprop="url" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; color: #FFF; text-decoration: none; line-height: 2em; font-weight: bold; text-align: center; cursor: pointer; display: inline-block; border-radius: 5px; text-transform: capitalize; background-color: #A8DCB0; margin: 0; border-color: #A8DCB0; border-style: solid; border-width: 10px 20px;">Activate coupon</a>
+                      <a href="${process.env.BASE_URL}/${data.uuid}" class="btn-primary" itemprop="url" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; color: #FFF; text-decoration: none; line-height: 2em; font-weight: bold; text-align: center; cursor: pointer; display: inline-block; border-radius: 5px; text-transform: capitalize; background-color: #A8DCB0; margin: 0; border-color: #A8DCB0; border-style: solid; border-width: 10px 20px;">Activate coupon</a>
                     </td>
                   </tr><tr style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; margin: 0;"><td class="content-block" style="font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0 0 20px;" valign="top">
                       Enjoy Today

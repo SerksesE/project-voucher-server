@@ -2,6 +2,9 @@ import 'reflect-metadata'
 import { createKoaServer } from "routing-controllers"
 import setupDb from './db'
 import CouponController from './coupons/controller';
+import * as dotenv from 'dotenv'
+
+dotenv.config()
 
 const port = process.env.PORT || 4000
 

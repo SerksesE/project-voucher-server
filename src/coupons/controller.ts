@@ -2,7 +2,6 @@ import { JsonController, Param, HttpCode, Post, Get, Body, NotFoundError, Patch,
 import { Context } from 'koa'
 import Coupon from './entity';
 import * as request from 'superagent'
-import { apiEndpoint, apiKey, emailSender } from '../config'
 import Form from '../forms/entity';
 import { renderTemplate } from './email-template';
 
@@ -69,11 +68,11 @@ export default class CouponController {
     if (!newCoupon || !newCoupon.id) throw new NotFoundError('Invalid coupon')
 
     //when you change something in the config (non pushed file) please make sure to notify the team
-    await request.post(apiEndpoint + '/messages')
-      .auth('api', apiKey)
+    await request.post(process.env.API_ENDPOINT + '/messages')
+      .auth('api', process.env.API_KEY)
       .type('form')
       .send({
-        'from': emailSender,
+        'from': process.env.EMAIL_SENDER,
         'to': newCoupon.email,
         'subject': 'Coffee Coupon',
         'html': renderTemplate(newCoupon),
