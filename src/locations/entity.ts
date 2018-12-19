@@ -22,10 +22,22 @@ export default class Location extends BaseEntity {
   button_color: string
 
   @Column('text')
+  button_text_color: string
+
+  @Column('text')
   coffee_image: string
 
   @Column('text')
   coupon_image: string
+
+  @Column('text')
+  free_color: string
+
+  @Column('text')
+  coffee_color: string
+
+  @Column('text')
+  courtesy_color: string
 
   @OneToMany(() => Form, form => form.location)
   form: Form
