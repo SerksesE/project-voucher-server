@@ -61,7 +61,7 @@ export default () =>
                   .then(form => {
                     //if not it makes one and we connect it to the location, witht he location:location
                     if (!form) {
-                      Form.create({ typeform_id: 'hzCA6t', location: location, barcode: 'https://i.redd.it/ig5u8ke5qo421.png' }).save()
+                      Form.create({ typeform_id: 'hzCA6t', location: location, barcode: 'https://www.dropbox.com/home/consumerview?preview=Barcode.png' }).save()
                     }
                   })
               })
