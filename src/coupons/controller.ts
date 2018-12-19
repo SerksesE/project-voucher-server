@@ -21,12 +21,12 @@ export default class CouponController {
     return { coupons }
   }
 
-  @Patch('/coupons/:id')
+  @Patch('/coupons/:uuid')
   async updateCoupon(
-    @Param('id') id: number
+    @Param('uuid') uuid: string
   ) {
     //checks if coupon exists
-    const coupon = await Coupon.findOne(id)
+    const coupon = await Coupon.findOneOrFail({ uuid: uuid })
     if (!coupon) throw new NotFoundError('invalid coupon id')
     //checks if coupon is already used
     if (coupon.used_at) throw new BadRequestError('coupon already used on ' + new Date(coupon.used_at))
@@ -35,7 +35,7 @@ export default class CouponController {
     //if the date today minus 15 days(so 15 days ago) is higher then the created_at date, the coupon expired
     if (new Date(Date.now() - fifteen_days) > new Date(coupon.created_at)) throw new BadRequestError('activation date expired')
     //adds the activation date to coupon
-    return Coupon.merge(coupon, { used_at: new Date(Date.now()) })
+    return Coupon.merge(coupon, { used_at: new Date(Date.now()) }).save()
   }
 
   @Post('/coupons')

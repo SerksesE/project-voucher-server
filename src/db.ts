@@ -42,11 +42,9 @@ export default () =>
     .then(_ => {
       console.log('Connected to Postgres with TypeORM ')
 
-      // Check if locations uva exists
-      Location.findOneOrFail({ name: 'UvA' })
+      Location.findOne({ name: 'UvA' })
         .then(location => {
           if (!location) {
-            //if it does not exist we make a location named uva 
             Location.create({
               name: 'UvA',
               logo: 'https://www.dropbox.com/s/gcycga700r7ih5r/Enjoy%20Today%20logo%20white%20transparent.png?dl=1',
@@ -56,10 +54,8 @@ export default () =>
               coupon_image: 'https://www.dropbox.com/s/9kkyibw7ef7kdoa/Coupon%20-%20empty.png?dl=1'
             }).save()
               .then(location => {
-                //checks if form already exists
-                Form.findOneOrFail({ typeform_id: 'hzCA6t' })
+                Form.findOne({ typeform_id: 'hzCA6t' })
                   .then(form => {
-                    //if not it makes one and we connect it to the location, witht he location:location
                     if (!form) {
                       Form.create({ typeform_id: 'hzCA6t', location: location, barcode: 'https://www.dropbox.com/s/yqgyq9935krvnit/Barcode.png?dl=1' }).save()
                     }
