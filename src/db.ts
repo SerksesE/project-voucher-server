@@ -43,7 +43,7 @@ export default () =>
       console.log('Connected to Postgres with TypeORM ')
 
       // Check if locations uva exists
-      Location.findOne({ name: 'UvA' })
+      Location.findOneOrFail({ name: 'UvA' })
         .then(location => {
           if (!location) {
             //if it does not exist we make a location named uva 
@@ -57,11 +57,34 @@ export default () =>
             }).save()
               .then(location => {
                 //checks if form already exists
-                Form.findOne({ typeform_id: 'hzCA6t' })
+                Form.findOneOrFail({ typeform_id: 'hzCA6t' })
                   .then(form => {
                     //if not it makes one and we connect it to the location, witht he location:location
                     if (!form) {
                       Form.create({ typeform_id: 'hzCA6t', location: location, barcode: 'https://www.dropbox.com/s/yqgyq9935krvnit/Barcode.png?dl=1' }).save()
+                    }
+                  })
+              })
+          }
+        })
+    })
+    .then(_ => {
+      Location.findOne({ name: 'TU Delft' })
+        .then(location => {
+          if (!location) {
+            Location.create({
+              name: 'TU Delft',
+              logo: 'https://www.dropbox.com/s/tfgw9692cdvqouh/TU%20Delft%20logo%20-%20fire.png?dl=1',
+              background_color: '#F7F7F7',
+              button_color: '#C4F7A1',
+              coffee_image: 'https://www.dropbox.com/s/k7kwnyj8auvtl8i/Coffee%20cup%20-%20TU%20Delft.png?dl=1',
+              coupon_image: 'https://www.dropbox.com/s/q5ixi3tn5byobx6/Blank%20coupon%20-%20TU%20Delft.png?dl=1'
+            }).save()
+              .then(location => {
+                Form.findOne({ typeform_id: 'gXFYS5' })
+                  .then(form => {
+                    if (!form) {
+                      Form.create({ typeform_id: 'gXFYS5', location: location, barcode: 'https://www.dropbox.com/s/yqgyq9935krvnit/Barcode.png?dl=1' }).save()
                     }
                   })
               })
