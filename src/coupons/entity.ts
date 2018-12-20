@@ -22,7 +22,6 @@ export default class Coupon extends BaseEntity {
   @Generated("uuid")
   uuid: string
 
-  //One form has many coupons
   @ManyToOne(() => Form, form => form.coupons)
   forms: Form
 }

@@ -53,8 +53,8 @@ export default () =>
               button_text_color: '#FFFFFF',
               coffee_image: 'https://www.dropbox.com/s/ol19mjawhni4tm4/Coffee%20cup%20icon.png?dl=1',
               coupon_image: 'https://www.dropbox.com/s/9kkyibw7ef7kdoa/Coupon%20-%20empty.png?dl=1',
-              free_color: '#AE9471',
-              coffee_color: '#663B26',
+              free_color: '#F69180',
+              coffee_color: '#9B815D',
               courtesy_color: '#8C8C8C'
             }).save()
               .then(location => {
